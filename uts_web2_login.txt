@@ -1,0 +1,63 @@
+README.md
+UTS
+UTS Data Covid
+Password atau email yang kamu masukkan salah
+'; } } ?> <title>Login Ke Data Covid</title>
+<h3 align="center">Silakan Login</h3>
+<form method="POST" action="input.php"> ( setelah mengisi forum login, akan di lanjutkan ke
+forum input )
+<table align="center">
+<tr>
+ <td>Username : <input type="email" name="email"><br></td> ( untuk mengisi username by
+email )
+</tr>
+<tr>
+ <td>Password : <input type="password" name="password"><br></td> (untuk mengisi password )
+ <?php echo $form_error; ?>
+</tr>
+<tr>
+ <td><input type="submit" name="submit" value="Login"></td>
+</tr>
+ </table>
+</form>
+<title></title> // setelah menginput akan melakukan post ke proses
+Inpututs Data Pemantauan Covid-19
+(untuk menginput nama operator) (menginput NIM operator) (menginput nama wilayah
+menggunakan dropdown) // untuk menginput masing masing dari jumlah data covid
+Nama Mahasiswa
+Nim
+Nama Wilayah :- Pilih wilayah - DKI JAKARTA JAWA BARAT BANTEN JAWA TENGAH
+Jumlah Positif:
+Jumlah Dirawat :
+Jumlah Sembuh :
+Jumlah Meninggal :
+Data Pemantauan Covid 19 Wilayah
+Per
+Nama Operator : NIM : // tabel output dari hasil yang sudah kita input <title>Data Covid</title>
+Data Pemantauan Covid-19 Wilayah
+Nama Operator NIM
+Jumlah Positif Jumlah Dirawat Jumlah SembuhJumlah Meningggal Opsi
+"/> "/> "/> "/>
+</tr>
+<?php
+include 'koneksi.php';
+
+$data = mysqli_query($koneksi,"select * from dtcovid");
+while($d = mysqli_fetch_array($data)){
+?>
+<tr>
+ <td><?php echo $d['positif']; ?></td>
+<td><?php echo $d['dirawat']; ?></td>
+<td><?php echo $d['sembuh']; ?></td>
+<td><?php echo $d['meninggal']; ?></td>
+// untuk mengedit data atau menghapus data
+<td>
+<a href="edit.php?id=<?php echo $d['positif']; ?>">EDIT</a>
+<a href="hapus.php?id=<?php echo $d['positif']; ?>">HAPUS</a>
+</td>
+</tr>
+<?php
+}
+?>
+</table>
+<a href="input.php">KEMBALI</a>
